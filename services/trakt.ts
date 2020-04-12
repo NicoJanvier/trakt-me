@@ -4,6 +4,7 @@ import myFetch, { traktServerFetch } from "../utils/fetch";
 import { Token } from "../pages/api/trakt/callback";
 
 const TRAKT_URI = 'https://api.trakt.tv';
+const TRAKT_REDIRECT_URI = "/api/trakt/callback";
 
 export async function exchangeToken(req: NextApiRequest, code?: string, refresh_token?: string): Promise<Token> {
   const data = {
@@ -11,7 +12,7 @@ export async function exchangeToken(req: NextApiRequest, code?: string, refresh_
     refresh_token,
     client_id: process.env.TRAKT_CLIENT_ID,
     client_secret: process.env.TRAKT_CLIENT_SECRET,
-    redirect_uri: `${getHost(req)}${process.env.TRAKT_REDIRECT_URI}`,
+    redirect_uri: `${getHost(req)}${TRAKT_REDIRECT_URI}`,
     grant_type: code ? 'authorization_code' : 'refresh_token'
   };
   const response = await myFetch(`${TRAKT_URI}/oauth/token`, {

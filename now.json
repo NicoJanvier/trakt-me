@@ -1,0 +1,8 @@
+{
+  "env": {
+    "TRAKT_CLIENT_ID": "@trakt_client_id",
+    "TRAKT_CLIENT_SECRET": "@trakt_client_secret",
+    "TMDB_API_KEY": "@tmdb_api_key",
+    "TMDB_AUTH_TOKEN": "@tmdb_auth_token"
+  }
+}
